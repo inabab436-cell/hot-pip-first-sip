@@ -2,18 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { ArrowUpLeft, ArrowLeft, Check, Leaf, Flame, Sparkles, Mail, MapPin, ShieldCheck, Coffee } from "lucide-react";
+import { ArrowUpLeft, ArrowLeft, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import campaign from "@/assets/hotpip-campaign.jpg";
 import editorial from "@/assets/pineapple-editorial.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "Hot pip | أناناس ساخن، مشروب الشتاء القادم" },
-    { name: "description", content: "دفء جديد بطعم الأناناس. اكتشف Hot pip، مشروب الشتاء القادم، وسجّل اهتمامك ليصلك خبر إطلاقه في مدينتك." },
+    { name: "description", content: "Hot pip، أناناس ساخن ومشروب الشتاء القادم. سجّل اهتمامك ومدينتك والسعر المتوقع." },
     { property: "og:title", content: "Hot pip | أناناس ساخن، مشروب الشتاء القادم" },
     { property: "og:description", content: "تجربة شتوية بطعم استوائي. كن من أوائل المهتمين بمشروب Hot pip." },
     { property: "og:type", content: "website" },
@@ -59,114 +58,46 @@ function Index() {
 
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
-      <header className="site-header">
-        <div className="page-width header-layout">
-          <a href="#" aria-label="Hot pip الرئيسية" className="wordmark" dir="ltr">hot pip<span className="text-brand-fruit">.</span></a>
-          <nav aria-label="التنقل الرئيسي" className="brand-navigation hidden items-center gap-9 text-sm font-semibold md:flex">
-            <a href="#story" className="nav-link">حكاية المشروب</a>
-            <a href="#experience" className="nav-link">تجربة مختلفة</a>
-            <a href="#questions" className="nav-link">أسئلة شائعة</a>
-          </nav>
-          <Button asChild className="header-action h-11 gap-3 px-5"><a href="#join">كن من الأوائل <ArrowUpLeft /></a></Button>
-        </div>
+      <header className="simple-header page-width">
+        <a href="#" aria-label="Hot pip الرئيسية" className="wordmark" dir="ltr">Hot pip</a>
+        <span className="text-xs text-muted-foreground">قريبًا</span>
       </header>
 
-      <section className="campaign-hero relative isolate overflow-hidden">
-        <picture className="campaign-picture"><source media="(max-width: 767px)" srcSet={campaign} /><img src={campaign} alt="زجاجة Hot pip مع الأناناس في خلفية فاتحة" width={1536} height={1024} fetchPriority="high" className="campaign-image" /></picture>
-        <div className="page-width relative z-10">
-          <div className="hero-copy">
-            <p className="eyebrow flex items-center gap-2"><span className="status-dot" /> فصل جديد من الدفء</p>
-            <h1 className="hero-brand" dir="ltr">hot pip<span>.</span></h1>
-            <h2 className="hero-title">أناناس ساخن<span>مشروب الشتاء القادم</span></h2>
-            <p className="mt-6 max-w-md text-lg leading-loose text-muted-foreground">طعم الأناناس اللي بتحبه.<br />في رشفة دافئة مش على بالك.</p>
-            <Button asChild size="lg" className="mt-7 h-14 gap-6 px-7 text-base"><a href="#join">سجّل اهتمامك <ArrowLeft /></a></Button>
-            <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-3.5" /> تسجيل اهتمام فقط، بدون شراء أو التزام</p>
-          </div>
+      <section className="simple-intro page-width">
+        <div className="simple-copy">
+          <h1>أناناس ساخن</h1>
+          <p>مشروب الشتاء القادم</p>
         </div>
-        <div className="hero-bottom"><span dir="ltr">PINEAPPLE. REIMAGINED.</span><a href="#story" aria-label="اكتشف حكاية المشروب"><span>اكتشف الحكاية</span><ArrowLeft className="size-4" /></a><span>قريبًا في الأسواق</span></div>
-      </section>
-
-      <section id="experience" className="border-b border-border bg-card">
-        <div className="page-width grid grid-cols-3 py-7 md:py-9">
-          {[[Leaf, "طعم الأناناس", "روح استوائية"], [Flame, "يتشرب ساخن", "دفء كل رشفة"], [Sparkles, "شيء مختلف", "خارج المعتاد"]].map(([Icon, title, subtitle], i) => {
-            const FeatureIcon = Icon as typeof Leaf;
-            return <div key={String(title)} className={`flex flex-col items-center gap-2 text-center md:flex-row md:justify-center md:gap-4 ${i < 2 ? "border-e border-border" : ""}`}>
-              <FeatureIcon strokeWidth={1.4} className="size-6 text-primary md:size-8" />
-              <div><h2 className="text-sm font-bold md:text-lg">{String(title)}</h2><p className="mt-1 hidden text-sm text-muted-foreground sm:block">{String(subtitle)}</p></div>
-            </div>;
-          })}
+        <div className="product-pair">
+          <img src={campaign} alt="زجاجة Hot pip" width={1536} height={1024} fetchPriority="high" className="bottle-photo" />
+          <img src={editorial} alt="كوب دافئ من مشروب الأناناس" width={1536} height={1024} className="cup-photo" />
         </div>
       </section>
 
-      <section id="story" className="page-width story-section grid items-center gap-10 py-16 md:grid-cols-2 md:gap-20 md:py-24">
-        <div className="story-photo relative overflow-hidden">
-          <img src={editorial} alt="تصوّر لمشروب أناناس ساخن في كوب زجاجي" width={1536} height={1024} loading="lazy" />
-          <span className="story-photo-caption">أناناس. دفء. مزاج جديد.</span>
-        </div>
-        <div>
-          <p className="eyebrow section-eyebrow"><span dir="ltr">01 /</span> الحكاية بدأت بسؤال</p>
-          <h2 className="section-title mt-4">مين قال إن الأناناس<br />لازم يتشرب بارد؟</h2>
-          <p className="mt-6 text-base leading-loose text-muted-foreground md:text-lg">كل شتاء له مشروبه. فكرنا نغيّر المعتاد، ونجمع طعم الأناناس اللي بنحبه مع الدفء اللي بندوّر عليه.</p>
-          <p className="mt-4 text-base leading-loose text-muted-foreground md:text-lg">دي بداية <span dir="ltr" className="font-bold text-foreground">Hot pip</span>. لسه ما نزلش الأسواق، لكن حكايتنا ممكن تبدأ معاك من دلوقتي.</p>
-          <div className="mt-8 border-s-2 border-brand-fruit ps-5"><p className="text-xl font-bold leading-relaxed">رشفة دافية.<br />وفكرة مش على بالك.</p></div>
-        </div>
-      </section>
-
-      <section id="join" className="join-section bg-secondary py-16 md:py-24">
-        <div className="page-width grid items-start gap-10 md:grid-cols-2 md:gap-20">
-          <div className="md:pt-9">
-            <p className="eyebrow section-eyebrow"><span dir="ltr">02 /</span> القائمة الأولى لـ Hot pip</p>
-            <h2 className="section-title mt-4">الحلو لسه جاي.<br /><span className="text-primary">خليك من الأوائل.</span></h2>
-            <p className="mt-6 max-w-md text-base leading-loose text-muted-foreground">سجّل اهتمامك، وقول لنا مدينتك والسعر اللي تتوقعه. رأيك يساعدنا نبدأ من المكان الصح.</p>
-            <div className="mt-8 space-y-5">
-              {[[Mail, "خبر الإطلاق على بريدك"], [MapPin, "مدينتك جزء من خطتنا"], [Coffee, "سعر مناسب يبدأ برأيك"]].map(([Icon, text]) => {
-                const JoinIcon = Icon as typeof Mail;
-                return <div key={String(text)} className="flex items-center gap-3 text-sm font-semibold"><span className="flex size-9 items-center justify-center rounded-full bg-card"><JoinIcon className="size-4 text-primary" /></span>{String(text)}</div>;
-              })}
-            </div>
-            {count !== null && count > 0 && <p className="mt-8 text-sm text-muted-foreground"><span className="font-bold text-primary">{count}</span> شخص شاركونا الاهتمام لحد دلوقتي</p>}
-          </div>
-          <div className="waitlist-panel rounded-lg border border-border bg-card p-6 shadow-soft md:p-9">
+      <section id="join" className="simple-join page-width">
+          <div className="waitlist-panel">
             {done ? <div className="py-8 text-center" aria-live="polite">
               <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-secondary"><Check className="size-8 text-primary" /></span>
               <h3 className="mt-6 text-3xl font-bold">أنت من الأوائل!</h3>
-              <p className="mt-4 leading-loose text-muted-foreground">هنبلغك أول ما Hot pip يوصل {form.city}.<br />شارك الحكاية مع أصحابك.</p>
+              <p className="mt-4 text-sm text-muted-foreground">هنبلغك عند الإطلاق في {form.city}.</p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
                 <Button asChild className="h-11"><a target="_blank" rel="noreferrer" href={`https://wa.me/?text=${shareText}${shareUrl}%3Futm_source%3Dwhatsapp%26utm_medium%3Dsocial`}>شارك على واتساب <ArrowUpLeft /></a></Button>
                 <Button asChild variant="outline" className="h-11"><a target="_blank" rel="noreferrer" href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}%3Futm_source%3Dfacebook%26utm_medium%3Dsocial`}>فيسبوك</a></Button>
               </div>
             </div> : <form onSubmit={submit} className="space-y-5">
-              <div className="mb-7"><h3 className="text-xl font-bold">مكانك في القائمة</h3><p className="mt-2 text-sm text-muted-foreground">بداية حكاية دافئة، في خطوات بسيطة.</p></div>
+              <div className="join-heading"><h2>سجّل اهتمامك</h2>{count !== null && count > 0 && <span className="text-xs text-muted-foreground">{count} مهتم</span>}</div>
+              <div className="signup-fields">
               <Field label="الاسم" id="name"><Input id="name" autoComplete="name" placeholder="اسمك الكريم" className="form-input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></Field>
               <Field label="البريد الإلكتروني" id="email"><Input id="email" type="email" dir="ltr" autoComplete="email" placeholder="you@example.com" className="form-input text-right" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></Field>
               <Field label="المدينة" id="city"><Input id="city" list="cities" autoComplete="address-level2" placeholder="اختر أو اكتب مدينتك" className="form-input" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} /><datalist id="cities">{CITIES.map(c => <option key={c} value={c} />)}</datalist></Field>
+              </div>
               <fieldset><legend className="mb-3 text-sm font-semibold">كم تتوقع سعر الزجاجة؟</legend><div className="grid grid-cols-2 gap-2">{PRICES.map(p => <Button type="button" variant="outline" aria-pressed={form.expected_price === p} key={p} onClick={() => setForm({ ...form, expected_price: p })} className={`h-12 whitespace-normal px-2 text-xs sm:text-sm ${form.expected_price === p ? "border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground" : "bg-background shadow-none"}`}>{form.expected_price === p && <Check className="size-3" />}{p}</Button>)}</div></fieldset>
               <Button type="submit" disabled={loading} className="h-13 w-full gap-5 text-base">{loading ? "جاري التسجيل..." : "سجّلني في القائمة"}{!loading && <ArrowLeft />}</Button>
-              <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground"><ShieldCheck className="size-3.5 shrink-0" /> تسجيل اهتمام، مش طلب شراء</p>
+              <p className="text-center text-xs text-muted-foreground">بدون شراء أو التزام</p>
             </form>}
           </div>
-        </div>
       </section>
-
-      <section id="questions" className="page-width grid gap-8 py-16 md:grid-cols-[0.8fr_1.2fr] md:gap-20 md:py-24">
-        <div><p className="eyebrow section-eyebrow"><span dir="ltr">03 /</span> قبل أول رشفة</p><h2 className="section-title mt-4">أكيد عندك<br />كام سؤال.</h2></div>
-        <Accordion type="single" collapsible dir="rtl" className="w-full">
-          {[
-            ["هو Hot pip إيه بالضبط؟", "مشروب أناناس ساخن، بفكرة مختلفة لمشروبات الشتاء. المنتج حاليًا في مرحلة ما قبل الإطلاق."],
-            ["هل المشروب متاح للشراء حاليًا؟", "لسه مش متاح في الأسواق. سجّل اهتمامك وهنبلغك على بريدك عند الإطلاق."],
-            ["ليه بتسألوا عن المدينة والسعر؟", "عشان نعرف فين الاهتمام الأكبر، وإيه السعر اللي الناس تتوقعه. رأيك يساعدنا نخطط لإطلاق المنتج."],
-            ["هل التسجيل يلزمني بالشراء؟", "لا، التسجيل للتعبير عن اهتمامك فقط. مفيش دفع أو التزام بالشراء."],
-          ].map(([q, a], i) => <AccordionItem key={q} value={`question-${i}`}><AccordionTrigger className="gap-5 py-6 text-start text-base font-bold hover:no-underline">{q}</AccordionTrigger><AccordionContent className="text-base leading-loose text-muted-foreground">{a}</AccordionContent></AccordionItem>)}
-        </Accordion>
-      </section>
-
-      <footer className="border-t border-border bg-card">
-        <div className="page-width footer-layout">
-          <a href="#" className="wordmark" dir="ltr">hot pip<span className="text-brand-fruit">.</span></a>
-          <p className="text-sm text-muted-foreground">أناناس ساخن. مشروب الشتاء القادم.</p>
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Hot pip. جميع الحقوق محفوظة.</p>
-        </div>
-      </footer>
+      <footer className="simple-footer text-xs text-muted-foreground" dir="ltr">© {new Date().getFullYear()} Hot pip</footer>
     </main>
   );
 }
