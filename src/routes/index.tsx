@@ -42,11 +42,17 @@ function Index() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     const parsed = schema.safeParse(form);
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "تحقق من البيانات");
+      return;
+    }
     setLoading(true);
     const { error } = await supabase.from("waitlist_signups").insert(parsed.data);
     setLoading(false);
-    if (error) return toast.error("حصلت مشكلة، حاول مرة أخرى");
+    if (error) {
+      toast.error("حصلت مشكلة، حاول مرة أخرى");
+      return;
+    }
     setDone(true);
     setCount((c) => (c ?? 0) + 1);
   }
