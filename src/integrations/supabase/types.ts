@@ -14,13 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      waitlist_signups: {
+        Row: {
+          city: string
+          created_at: string
+          email: string
+          expected_price: string
+          id: string
+          name: string
+        }
+        Insert: {
+          city: string
+          created_at?: string
+          email: string
+          expected_price: string
+          id?: string
+          name: string
+        }
+        Update: {
+          city?: string
+          created_at?: string
+          email?: string
+          expected_price?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      waitlist_count: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never
