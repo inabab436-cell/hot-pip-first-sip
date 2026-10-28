@@ -7,6 +7,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroPair from "@/assets/hotpip-hero-pair.jpg";
+import logoAsset from "@/assets/hotpip-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -58,7 +60,11 @@ function Index() {
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <header className="simple-header page-width">
-        <a href="#" aria-label="Hot pip الرئيسية" className="wordmark" dir="ltr">Hot pip</a>
+        <a href="#" aria-label="Hot pip الرئيسية" className="brand-link">
+          <img src={logoAsset.url} alt="" width={44} height={36} className="brand-logo" />
+          <span className="wordmark" dir="ltr">Hot pip</span>
+        </a>
+
         <span className="text-xs text-muted-foreground">قريبًا</span>
       </header>
 
