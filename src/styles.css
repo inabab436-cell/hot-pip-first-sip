@@ -102,6 +102,9 @@
 
 .page-width { width: min(1000px, calc(100% - 48px)); margin-inline: auto; }
 .wordmark { font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.3; color: var(--primary); }
+.brand-link { display: inline-flex; align-items: center; gap: 10px; }
+.brand-logo { width: 34px; height: auto; display: block; }
+
 .simple-header { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 .simple-intro { padding-top: 20px; }
 .simple-copy { text-align: center; margin-bottom: 28px; }
