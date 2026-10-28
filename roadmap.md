@@ -5,4 +5,4 @@
 - [x] Research large-brand beverage references and refine typography, composition and palette.
 - [x] Feature the existing Hot pip bottle in a light full-width campaign background.
 - [x] Verify the revised presentation and unchanged registration flow; real signup succeeded and test data was removed.
-- [ ] Replace rejected typography and verify harmonious text sizes on mobile and desktop.
+- [x] Replace rejected typography and verify harmonious text sizes on mobile and desktop.
