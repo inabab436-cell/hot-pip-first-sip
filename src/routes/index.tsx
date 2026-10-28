@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { ArrowUpLeft, ArrowLeft, Check, Leaf, Flame, Sparkles, Mail, MapPin, ShieldCheck, Instagram, Coffee } from "lucide-react";
+import { ArrowUpLeft, ArrowLeft, Check, Leaf, Flame, Sparkles, Mail, MapPin, ShieldCheck, Coffee } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
