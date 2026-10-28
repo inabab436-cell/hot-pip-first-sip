@@ -6,7 +6,7 @@ import { ArrowUpLeft, ArrowLeft, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import heroPair from "@/assets/hotpip-hero-pair.jpg";
+import heroPair from "@/assets/hotpip-hero-pair-v2.jpg";
 import logoAsset from "@/assets/hotpip-logo.png.asset.json";
 
 
@@ -23,16 +23,14 @@ export const Route = createFileRoute("/")({
 });
 
 const CITIES = ["القاهرة", "الجيزة", "الإسكندرية", "المنصورة", "طنطا", "الزقازيق", "أسيوط", "الأقصر", "أسوان", "بورسعيد", "الإسماعيلية", "السويس", "الغردقة"];
-const PRICES = ["أقل من 30 جنيه", "30 – 45 جنيه", "45 – 60 جنيه", "أكثر من 60 جنيه"];
 const schema = z.object({
-  name: z.string().trim().min(2, "اكتب اسمك").max(100),
   email: z.string().trim().email("بريد إلكتروني غير صحيح").max(255),
   city: z.string().trim().min(2, "اختر مدينتك").max(100),
-  expected_price: z.string().min(1, "اختر السعر المتوقع"),
+  expected_price: z.string().trim().min(1, "اكتب السعر المتوقع").max(50),
 });
 
 function Index() {
-  const [form, setForm] = useState({ name: "", email: "", city: "", expected_price: "" });
+  const [form, setForm] = useState({ email: "", city: "", expected_price: "" });
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [count, setCount] = useState<number | null>(null);
@@ -73,7 +71,7 @@ function Index() {
           <h1>أناناس ساخن</h1>
           <p>مشروب الشتاء القادم</p>
         </div>
-        <img src={heroPair} alt="زجاجة Hot pip بجانب كوب دافئ من مشروب الأناناس" width={1536} height={768} fetchPriority="high" className="hero-pair" />
+        <img src={heroPair} alt="زجاجة Hot pip بجانب كوب دافئ من مشروب الأناناس وقطعة أناناس مقطعة" width={1536} height={768} fetchPriority="high" className="hero-pair" />
       </section>
 
       <section id="join" className="simple-join page-width">
@@ -89,11 +87,10 @@ function Index() {
             </div> : <form onSubmit={submit} className="space-y-5">
               <div className="join-heading"><h2>سجّل اهتمامك</h2>{count !== null && count > 0 && <span className="text-xs text-muted-foreground">{count} مهتم</span>}</div>
               <div className="signup-fields">
-              <Field label="الاسم" id="name"><Input id="name" autoComplete="name" placeholder="اسمك الكريم" className="form-input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></Field>
               <Field label="البريد الإلكتروني" id="email"><Input id="email" type="email" dir="ltr" autoComplete="email" placeholder="you@example.com" className="form-input text-right" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></Field>
               <Field label="المدينة" id="city"><Input id="city" list="cities" autoComplete="address-level2" placeholder="اختر أو اكتب مدينتك" className="form-input" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} /><datalist id="cities">{CITIES.map(c => <option key={c} value={c} />)}</datalist></Field>
+              <Field label="السعر المتوقع للزجاجة" id="price"><Input id="price" inputMode="decimal" placeholder="اكتب السعر المتوقع بالجنيه" className="form-input" value={form.expected_price} onChange={(e) => setForm({ ...form, expected_price: e.target.value })} /></Field>
               </div>
-              <fieldset><legend className="mb-3 text-sm font-semibold">كم تتوقع سعر الزجاجة؟</legend><div className="grid grid-cols-2 gap-2">{PRICES.map(p => <Button type="button" variant="outline" aria-pressed={form.expected_price === p} key={p} onClick={() => setForm({ ...form, expected_price: p })} className={`h-12 whitespace-normal px-2 text-xs sm:text-sm ${form.expected_price === p ? "border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground" : "bg-background shadow-none"}`}>{form.expected_price === p && <Check className="size-3" />}{p}</Button>)}</div></fieldset>
               <Button type="submit" disabled={loading} className="h-13 w-full gap-5 text-base">{loading ? "جاري التسجيل..." : "سجّلني في القائمة"}{!loading && <ArrowLeft />}</Button>
               <p className="text-center text-xs text-muted-foreground">بدون شراء أو التزام</p>
             </form>}
