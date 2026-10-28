@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroPair from "@/assets/hotpip-hero-pair-v4.jpg";
-import logoAsset from "@/assets/hotpip-logo.png.asset.json";
+import logoAsset from "@/assets/hotpip-logo.png";
 
 
 export const Route = createFileRoute("/")({
