@@ -6,3 +6,4 @@
 - [x] Feature the existing Hot pip bottle in a light full-width campaign background.
 - [x] Verify the revised presentation and unchanged registration flow; real signup succeeded and test data was removed.
 - [x] Replace rejected typography and verify harmonious text sizes on mobile and desktop.
+- [x] Simplify to product and warm cup, short text, and the unchanged interest form; verify both screen sizes.
