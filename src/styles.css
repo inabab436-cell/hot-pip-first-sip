@@ -51,7 +51,7 @@
 }
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.992 0.004 92);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.29 0.027 155);
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
@@ -99,88 +99,41 @@
   a { -webkit-tap-highlight-color: transparent; }
 }
 @utility shadow-soft { box-shadow: var(--shadow-soft); }
-.form-input { height: 48px; padding-inline: 14px; background: var(--background); font-size: 14px; box-shadow: none; }
-.page-width { width: min(1280px, calc(100% - 112px)); margin-inline: auto; }
-.site-header { background: var(--card); border-bottom: 1px solid var(--border); }
-.header-layout { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 92px; gap: 24px; }
-.wordmark { font-family: var(--font-display); font-size: 32px; font-weight: 800; line-height: 1.2; color: var(--primary); }
-.header-layout > .wordmark { grid-column: 2; grid-row: 1; }
-.brand-navigation { grid-column: 1; grid-row: 1; font-size: 15px; gap: 26px; }
-.header-action { grid-column: 3; grid-row: 1; justify-self: end; }
-.nav-link { transition: color 180ms; white-space: nowrap; }
-.nav-link:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 6px; }
-.campaign-hero { height: 680px; background: var(--hero-surface); }
-.campaign-picture { position: absolute; inset: 0; z-index: -1; }
-.campaign-image { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
-.hero-copy { width: 49%; padding-block: 58px 80px; }
-.hero-brand { margin-top: 17px; font-family: var(--font-display); font-size: 76px; font-weight: 800; line-height: 1.15; text-align: right; color: var(--primary); }
-.hero-brand span { color: var(--brand-fruit); }
-.hero-title { margin-top: 24px; font-size: 48px; font-weight: 800; line-height: 1.5; }
-.hero-title span { display: block; margin-top: 6px; font-size: 28px; font-weight: 400; line-height: 1.6; color: var(--primary); }
-.hero-copy > p:nth-of-type(2) { font-size: 19px; line-height: 1.8; margin-top: 20px; }
-.hero-copy > a { border-radius: 4px; min-width: 205px; justify-content: space-between; margin-top: 23px; }
-.eyebrow { font-size: 14px; font-weight: 700; color: var(--primary); }
-.status-dot { height: 6px; width: 6px; background: var(--brand-fruit); border-radius: 50%; }
-.hero-bottom { position: absolute; bottom: 0; inset-inline: 56px; padding-block: 19px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent); font-size: 12px; color: var(--primary); }
-.hero-bottom > a { display: flex; align-items: center; gap: 14px; }
-.hero-bottom > span:first-child { font-family: var(--font-display); }
-.section-eyebrow { display: flex; align-items: center; gap: 15px; }
-.section-eyebrow > span { font-size: 12px; color: var(--muted-foreground); }
-.section-title { font-size: 38px; font-weight: 800; line-height: 1.6; text-wrap: balance; }
-.story-section { padding-block: 110px; }
-.story-photo { min-height: 500px; align-self: stretch; }
-.story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 12% center; }
-.story-photo-caption { position: absolute; bottom: 22px; right: 24px; font-size: 14px; color: var(--primary); }
-.join-section { padding-block: 100px; }
-.waitlist-panel { border-top: 3px solid var(--primary); }
-.waitlist-panel h3 { font-size: 24px; font-weight: 700; line-height: 1.6; }
-.waitlist-panel label, .waitlist-panel legend { font-size: 15px; }
-.form-input { font-size: 16px; height: 52px; }
-.footer-layout { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 48px; }
-.footer-layout .wordmark { font-size: 48px; }
-@media (min-width: 1600px) {
-  .campaign-image { object-fit: contain; object-position: left center; }
-  .hero-copy { width: 46%; }
-}
-@media (min-width: 768px) and (max-width: 1100px) {
-  .page-width { width: calc(100% - 64px); }
-  .header-layout { grid-template-columns: auto 1fr auto; }
-  .brand-navigation { gap: 14px; font-size: 13px; }
-  .hero-brand { font-size: 64px; }
-  .hero-title { font-size: 40px; }
-  .hero-title span { font-size: 24px; }
-}
+
+.page-width { width: min(1000px, calc(100% - 48px)); margin-inline: auto; }
+.wordmark { font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.3; color: var(--primary); }
+.simple-header { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.simple-intro { padding-top: 20px; }
+.simple-copy { text-align: center; margin-bottom: 28px; }
+.simple-copy h1 { font-size: 30px; font-weight: 700; line-height: 1.5; }
+.simple-copy p { font-size: 16px; color: var(--muted-foreground); margin-top: 5px; }
+.product-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; direction: ltr; }
+.product-pair img { display: block; width: 100%; height: 340px; object-fit: cover; }
+.bottle-photo { object-position: 12% center; }
+.cup-photo { object-position: 15% center; }
+.simple-join { max-width: 650px; padding-block: 34px 28px; }
+.waitlist-panel { border-top: 1px solid var(--border); padding-top: 24px; }
+.join-heading { display: flex; align-items: center; justify-content: space-between; }
+.join-heading h2, .waitlist-panel h3 { font-size: 20px; font-weight: 700; line-height: 1.6; }
+.signup-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.signup-fields > div:last-child { grid-column: 1 / -1; }
+.form-input { height: 46px; padding-inline: 12px; font-size: 14px; background: var(--background); box-shadow: none; }
+.waitlist-panel label, .waitlist-panel legend { font-size: 13px; font-weight: 700; }
+.simple-footer { text-align: center; padding: 16px 24px 28px; }
 @media (max-width: 767px) {
   .page-width { width: calc(100% - 40px); }
-  .header-layout { min-height: 74px; display: flex; justify-content: space-between; gap: 12px; }
-  .wordmark { font-size: 28px; }
-  .header-action { height: 40px; font-size: 13px; }
-  .campaign-hero { height: 602px; }
-  .campaign-picture { inset: auto 0 0; height: 310px; }
-  .campaign-image { object-fit: cover; object-position: left 55%; }
-  .hero-copy { width: 100%; padding-top: 25px; }
-  .hero-brand { margin-top: 10px; font-size: 48px; line-height: 1.2; }
-  .hero-title { margin-top: 16px; font-size: 34px; line-height: 1.5; }
-  .hero-title span { font-size: 22px; margin-top: 3px; }
-  .hero-copy > p:nth-of-type(2) { margin-top: 12px; font-size: 15px; line-height: 1.7; }
-  .hero-copy > a { margin-top: 15px; height: 45px; min-width: 180px; font-size: 14px; }
-  .hero-copy > p:last-child { margin-top: 10px; font-size: 11px; }
-  .hero-copy > .eyebrow { font-size: 12px; }
-  .hero-bottom { bottom: 0; inset-inline: 20px; padding-block: 10px; font-size: 10px; }
-  .hero-bottom > a { display: none; }
-  .hero-bottom > span:first-child { font-size: 9px; }
-  .section-title { font-size: 28px; }
-  .story-section { padding-block: 58px; gap: 32px; }
-  .story-photo { min-height: 350px; }
-  .join-section { padding-block: 58px; }
-  .waitlist-panel h3 { font-size: 23px; }
-  .footer-layout { flex-direction: column; gap: 18px; padding-block: 35px; }
-  .footer-layout .wordmark { font-size: 40px; }
+  .simple-header { height: 64px; }
+  .simple-intro { padding-top: 14px; }
+  .simple-copy { margin-bottom: 22px; }
+  .simple-copy h1 { font-size: 26px; }
+  .simple-copy p { font-size: 15px; }
+  .product-pair { gap: 8px; }
+  .product-pair img { height: 230px; }
+  .simple-join { padding-top: 26px; }
+  .signup-fields { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 359px) {
-  .hero-brand { font-size: 44px; }
-  .hero-title { font-size: 30px; }
-  .hero-title span { font-size: 20px; }
+  .product-pair img { height: 200px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
