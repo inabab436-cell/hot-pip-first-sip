@@ -129,7 +129,7 @@
   .signup-fields { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 359px) {
-  .product-pair img { height: 200px; }
+  .hero-pair { height: 210px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
