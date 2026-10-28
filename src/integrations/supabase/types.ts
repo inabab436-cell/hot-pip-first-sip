@@ -21,7 +21,7 @@ export type Database = {
           email: string
           expected_price: string
           id: string
-          name: string
+          name: string | null
         }
         Insert: {
           city: string
@@ -29,7 +29,7 @@ export type Database = {
           email: string
           expected_price: string
           id?: string
-          name: string
+          name?: string | null
         }
         Update: {
           city?: string
@@ -37,7 +37,7 @@ export type Database = {
           email?: string
           expected_price?: string
           id?: string
-          name?: string
+          name?: string | null
         }
         Relationships: []
       }
