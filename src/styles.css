@@ -139,7 +139,7 @@
 .footer-layout { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 48px; }
 .footer-layout .wordmark { font-size: 48px; }
 @media (min-width: 1600px) {
-  .campaign-image { object-position: center 57%; }
+  .campaign-image { object-fit: contain; object-position: left center; }
   .hero-copy { width: 46%; }
 }
 @media (min-width: 768px) and (max-width: 1100px) {
