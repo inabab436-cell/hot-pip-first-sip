@@ -74,7 +74,7 @@ function Index() {
         </div>
         <div className="relative flex justify-center">
           <div className="absolute inset-0 bg-glow" />
-          <img src={bottle.url} alt="زجاجة Hot pip مشروب الأناناس الساخن" className="relative w-72 animate-floaty md:w-96" />
+          <img src={bottle.url} alt="زجاجة Hot pip مشروب الأناناس الساخن" className="relative w-72 rounded-3xl animate-floaty md:w-96" />
         </div>
       </section>
 
