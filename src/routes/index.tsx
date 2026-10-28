@@ -6,7 +6,7 @@ import { ArrowUpLeft, ArrowLeft, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import heroPair from "@/assets/hotpip-hero-pair-v2.jpg";
+import heroPair from "@/assets/hotpip-hero-pair-v4.jpg";
 import logoAsset from "@/assets/hotpip-logo.png.asset.json";
 
 
