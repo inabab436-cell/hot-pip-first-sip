@@ -6,8 +6,7 @@ import { ArrowUpLeft, ArrowLeft, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import campaign from "@/assets/hotpip-campaign.jpg";
-import editorial from "@/assets/pineapple-editorial.jpg";
+import heroPair from "@/assets/hotpip-hero-pair.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -68,10 +67,7 @@ function Index() {
           <h1>أناناس ساخن</h1>
           <p>مشروب الشتاء القادم</p>
         </div>
-        <div className="product-pair">
-          <img src={campaign} alt="زجاجة Hot pip" width={1536} height={1024} fetchPriority="high" className="bottle-photo" />
-          <img src={editorial} alt="كوب دافئ من مشروب الأناناس" width={1536} height={1024} className="cup-photo" />
-        </div>
+        <img src={heroPair} alt="زجاجة Hot pip بجانب كوب دافئ من مشروب الأناناس" width={1536} height={768} fetchPriority="high" className="hero-pair" />
       </section>
 
       <section id="join" className="simple-join page-width">
